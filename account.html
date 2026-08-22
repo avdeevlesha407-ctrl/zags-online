@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Личный кабинет — ЗАГС ONLINE</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+<div class="container" style="max-width:700px;margin:100px auto;">
+
+
+<h1>
+♥ Личный кабинет
+</h1>
+
+
+<p id="userInfo">
+Загрузка...
+</p>
+
+
+<h2>
+Мои заявления
+</h2>
+
+
+<div id="applications">
+
+Заявлений ещё нет.
+
+</div>
+
+
+<button onclick="logout()">
+Выйти
+</button>
+
+
+</div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+<script>
+
+
+const client = window.supabase.createClient(
+
+"https://urpyixokiisyyjyfqdqp.supabase.co",
+
+"sb_publishable_7Pc3MuZhmSqFv3_R0gZnrg_8YUQyI0K"
+
+);
+
+
+
+async function loadUser(){
+
+
+const {
+
+data:{user}
+
+} = await client.auth.getUser();
+
+
+
+if(!user){
+
+window.location.href="login.html";
+
+return;
+
+}
+
+
+
+document.getElementById("userInfo").innerHTML =
+
+"Вы вошли как: " + user.email;
+
+
+}
+
+
+
+async function logout(){
+
+
+await client.auth.signOut();
+
+
+window.location.href="login.html";
+
+
+}
+
+
+
+loadUser();
+
+
+</script>
+
+
+</body>
+
+</html>
