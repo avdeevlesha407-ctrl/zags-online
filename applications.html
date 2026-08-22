@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Мои заявления — ЗАГС ONLINE</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+<header class="header">
+
+<div class="container header-inner">
+
+
+<div class="logo">
+
+<div class="logo-icon">
+♥
+</div>
+
+
+<div>
+
+<div class="logo-title">
+ЗАГС ONLINE
+</div>
+
+<div class="logo-subtitle">
+Государственная регистрация
+</div>
+
+</div>
+
+</div>
+
+
+<a href="index.html" class="header-button">
+На главную
+</a>
+
+
+</div>
+
+</header>
+
+
+
+<main>
+
+
+<section class="status" style="min-height:80vh;">
+
+
+<div class="container">
+
+
+<div class="status-box">
+
+
+<div class="status-text">
+
+
+<div class="section-label">
+МОИ ЗАЯВЛЕНИЯ
+</div>
+
+
+<h2>
+История заявлений
+</h2>
+
+
+<p>
+Введите данные заявления,
+чтобы посмотреть информацию.
+</p>
+
+
+</div>
+
+
+
+<div class="status-form">
+
+
+<input
+type="text"
+id="applicationNumber"
+placeholder="Номер ZAGS-583214"
+>
+
+
+<input
+type="text"
+id="applicationCode"
+placeholder="Код доступа"
+>
+
+
+<button onclick="loadApplication()">
+Проверить
+</button>
+
+
+<div id="applicationResult"></div>
+
+
+</div>
+
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+</main>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="script.js"></script>
+
+
+</body>
+
+</html>
