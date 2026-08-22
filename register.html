@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Регистрация — ЗАГС ONLINE</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+<div class="container" style="max-width:500px;margin:100px auto;">
+
+
+<h1>
+Регистрация
+</h1>
+
+
+<input
+id="name"
+type="text"
+placeholder="Ваше имя"
+style="width:100%;padding:15px;margin:10px 0;"
+>
+
+
+<input
+id="email"
+type="email"
+placeholder="Email"
+style="width:100%;padding:15px;margin:10px 0;"
+>
+
+
+<input
+id="password"
+type="password"
+placeholder="Пароль"
+style="width:100%;padding:15px;margin:10px 0;"
+>
+
+
+<button onclick="register()">
+Создать аккаунт
+</button>
+
+
+<p>
+
+Уже есть аккаунт?
+
+<a href="login.html">
+Войти
+</a>
+
+</p>
+
+
+</div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+<script>
+
+
+const supabaseClient = supabase.createClient(
+
+"ТВОЙ_SUPABASE_URL",
+
+"ТВОЙ_ANON_KEY"
+
+);
+
+
+
+async function register(){
+
+
+const name =
+document.getElementById("name").value;
+
+
+const email =
+document.getElementById("email").value;
+
+
+const password =
+document.getElementById("password").value;
+
+
+
+const {data,error} =
+await supabaseClient.auth.signUp({
+
+email,
+
+password,
+
+
+options: {
+
+data: {
+
+name:name
+
+}
+
+}
+
+});
+
+
+
+if(error){
+
+alert(error.message);
+
+return;
+
+}
+
+
+
+alert("Аккаунт создан!");
+
+window.location.href="login.html";
+
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>
