@@ -68,75 +68,58 @@ style="width:100%;padding:15px;margin:10px 0;"
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-
 <script>
 
-
-const supabaseClient = supabase.createClient(
-
-"https://urpyixokiisyyjyfqdqp.supabase.co",
-
-"sb_publishable_7Pc3MuZhmSqFv3_R0gZnrg_8YUQyI0K"
-
+const client = window.supabase.createClient(
+    "https://urpyixokiisyyjyfqdqp.supabase.co",
+    "ТВОЙ_ПУБЛИК_KEY"
 );
 
 
+async function register() {
 
-async function register(){
+    const name =
+        document.getElementById("name").value;
 
+    const email =
+        document.getElementById("email").value;
 
-const name =
-document.getElementById("name").value;
-
-
-const email =
-document.getElementById("email").value;
-
-
-const password =
-document.getElementById("password").value;
+    const password =
+        document.getElementById("password").value;
 
 
+    const { data, error } =
+        await client.auth.signUp({
 
-const {data,error} =
-await supabaseClient.auth.signUp({
+            email: email,
 
-email: email,
+            password: password,
 
-password: password,
+            options: {
 
+                data: {
+                    name: name
+                }
 
-options: {
+            }
 
-data: {
-
-name: name
-
-}
-
-}
-
-});
+        });
 
 
+    if (error) {
 
-if(error){
+        alert(error.message);
 
-alert(error.message);
+        return;
 
-return;
+    }
+
+
+    alert("Аккаунт создан!");
+
+    window.location.href = "login.html";
 
 }
-
-
-
-alert("Аккаунт создан!");
-
-window.location.href="login.html";
-
-
-}
-
 
 </script>
 
