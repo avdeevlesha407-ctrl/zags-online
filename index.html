@@ -19,246 +19,572 @@
 
     <style>
 
-        /* ==================================================
-           СВИДЕТЕЛЬСТВО — УЧЕБНЫЙ ОБРАЗЕЦ
-        ================================================== */
+        /* =====================================================
+           ОКНО УЧЕБНОГО СВИДЕТЕЛЬСТВА
+           ===================================================== */
 
         .certificate-modal {
-            width: min(1050px, 100%);
+            position: fixed;
+            inset: 0;
+            z-index: 2000;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 20px;
+
+            background: rgba(0, 0, 0, 0.88);
+            backdrop-filter: blur(10px);
+
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+
+            transition: 0.25s;
         }
 
-        .certificate-preview {
+        .certificate-modal.active {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+
+        .certificate-window {
             position: relative;
-            margin-top: 25px;
-            padding: 35px;
-            background: #f5f0e6;
-            color: #222;
-            border: 8px solid #8b1e2d;
+
+            width: min(1000px, 100%);
+            max-height: 95vh;
+
+            overflow-y: auto;
+
+            padding: 20px;
+
+            border-radius: 18px;
+
+            background: #101b29;
+
+            border: 1px solid rgba(255,255,255,0.12);
+
             box-shadow:
-                inset 0 0 0 2px #d2b48c,
-                0 20px 60px rgba(0, 0, 0, 0.35);
-            overflow: hidden;
+                0 40px 120px rgba(0,0,0,0.7);
         }
 
-        .certificate-preview::before {
-            content: "";
+        .certificate-window::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .certificate-window::-webkit-scrollbar-thumb {
+            background: #345579;
+            border-radius: 10px;
+        }
+
+        .certificate-close {
             position: absolute;
-            inset: 15px;
-            border: 2px solid rgba(139, 30, 45, 0.35);
+
+            top: 10px;
+            right: 10px;
+
+            z-index: 5;
+
+            width: 40px;
+            height: 40px;
+
+            border: 0;
+            border-radius: 50%;
+
+            background: rgba(255,255,255,0.08);
+
+            color: white;
+
+            font-size: 25px;
+
+            cursor: pointer;
+        }
+
+        .certificate-close:hover {
+            background: rgba(255,255,255,0.16);
+        }
+
+
+        /* =====================================================
+           БУМАГА
+           ===================================================== */
+
+        .certificate-paper {
+
+            position: relative;
+
+            width: 100%;
+            max-width: 850px;
+
+            min-height: 600px;
+
+            margin: 25px auto;
+
+            padding: 55px 65px;
+
+            overflow: hidden;
+
+            color: #171717;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #fffdf8,
+                    #f7f1e5
+                );
+
+            border: 12px solid #8d1717;
+
+            box-shadow:
+                inset 0 0 0 2px #c79b63,
+                inset 0 0 0 8px #f8ead0,
+                0 20px 60px rgba(0,0,0,0.45);
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+        }
+
+        .certificate-paper::before {
+            content: "";
+
+            position: absolute;
+
+            inset: 18px;
+
+            border: 1px solid #b8894e;
+
             pointer-events: none;
         }
 
         .certificate-watermark {
+
             position: absolute;
+
             left: 50%;
             top: 50%;
-            transform: translate(-50%, -50%) rotate(-25deg);
-            width: 100%;
-            text-align: center;
-            color: rgba(139, 30, 45, 0.12);
+
+            transform:
+                translate(-50%, -50%)
+                rotate(-25deg);
+
+            white-space: nowrap;
+
+            color: rgba(141,23,23,0.10);
+
+            font-family: Arial, sans-serif;
+
             font-size: 55px;
             font-weight: 900;
-            white-space: nowrap;
+
+            letter-spacing: 4px;
+
             pointer-events: none;
-            user-select: none;
         }
 
-        .certificate-warning {
+
+        /* =====================================================
+           ЗАГОЛОВОК
+           ===================================================== */
+
+        .certificate-top {
+
             position: relative;
-            z-index: 2;
-            margin-bottom: 25px;
-            padding: 10px 15px;
+
             text-align: center;
-            background: #8b1e2d;
-            color: white;
-            font-size: 12px;
-            font-weight: 900;
-            letter-spacing: 1px;
+
+            z-index: 1;
         }
 
-        .certificate-header {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            margin-bottom: 30px;
+        .certificate-emblem {
+
+            width: 70px;
+            height: 70px;
+
+            margin: 0 auto 10px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border: 3px solid #8d1717;
+
+            border-radius: 50%;
+
+            color: #8d1717;
+
+            font-size: 32px;
+
+            font-weight: bold;
         }
 
-        .certificate-header-small {
-            font-size: 13px;
-            color: #555;
-            margin-bottom: 8px;
+        .certificate-country {
+
+            font-size: 15px;
+
+            letter-spacing: 2px;
+
+            font-weight: bold;
+
+            color: #4a4a4a;
         }
 
         .certificate-title {
-            color: #8b1e2d;
-            font-size: 30px;
-            font-weight: 900;
+
+            margin-top: 18px;
+
+            color: #8d1717;
+
+            font-size: 32px;
+
+            font-weight: bold;
+
             letter-spacing: 2px;
-            text-transform: uppercase;
         }
 
         .certificate-subtitle {
-            margin-top: 8px;
-            font-size: 14px;
+
+            margin-top: 5px;
+
             color: #555;
+
+            font-size: 14px;
+
+            letter-spacing: 1px;
         }
+
+
+        /* =====================================================
+           ОСНОВНОЙ ТЕКСТ
+           ===================================================== */
 
         .certificate-body {
+
             position: relative;
-            z-index: 2;
+
+            z-index: 1;
+
+            margin-top: 45px;
+
+            font-size: 17px;
+
+            line-height: 1.7;
         }
 
-        .certificate-row {
-            margin: 20px 0;
-            text-align: center;
+        .certificate-line {
+
+            display: flex;
+
+            gap: 8px;
+
+            margin-bottom: 16px;
+
+            border-bottom: 1px dotted #888;
+
+            padding-bottom: 4px;
         }
 
         .certificate-label {
-            font-size: 11px;
-            color: #777;
+
+            color: #555;
+
+            white-space: nowrap;
+
+            font-size: 13px;
+
             text-transform: uppercase;
-            letter-spacing: 1px;
         }
 
         .certificate-value {
-            margin-top: 5px;
-            font-family: Georgia, "Times New Roman", serif;
-            font-size: 23px;
-            font-weight: 700;
-            color: #222;
+
+            flex: 1;
+
+            font-weight: bold;
+
+            color: #171717;
         }
 
-        .certificate-names {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 35px;
-            margin: 35px 0;
-        }
+        .certificate-marriage-text {
 
-        .certificate-person {
-            padding: 20px;
+            margin-top: 30px;
+
+            margin-bottom: 25px;
+
             text-align: center;
-            border: 1px solid rgba(139, 30, 45, 0.3);
-            background: rgba(255, 255, 255, 0.35);
+
+            font-size: 18px;
         }
 
-        .certificate-person-title {
-            color: #8b1e2d;
-            font-size: 12px;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 12px;
+        .certificate-marriage-text strong {
+
+            color: #8d1717;
+
+            font-size: 22px;
         }
 
-        .certificate-person-name {
-            font-family: Georgia, "Times New Roman", serif;
-            font-size: 20px;
-            font-weight: 700;
-        }
 
-        .certificate-footer {
-            position: relative;
-            z-index: 2;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+        /* =====================================================
+           НОМЕР
+           ===================================================== */
+
+        .certificate-number {
+
+            display: flex;
+
+            justify-content: space-between;
+
             gap: 30px;
-            margin-top: 40px;
-            padding-top: 25px;
-            border-top: 1px solid rgba(0, 0, 0, 0.2);
+
+            margin-top: 30px;
+
+            font-size: 13px;
         }
 
-        .certificate-footer-item {
-            font-size: 12px;
+        .certificate-number div {
+
+            min-width: 200px;
+
+            border-bottom: 1px solid #777;
+
+            padding-bottom: 5px;
+        }
+
+
+        /* =====================================================
+           ПОДПИСИ
+           ===================================================== */
+
+        .certificate-signatures {
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 50px;
+
+            margin-top: 50px;
+        }
+
+        .certificate-signature {
+
+            text-align: center;
+
+            font-size: 13px;
+        }
+
+        .signature-line {
+
+            height: 40px;
+
+            border-bottom: 1px solid #555;
+
+            margin-bottom: 7px;
+        }
+
+        .signature-caption {
+
             color: #555;
         }
 
-        .certificate-footer-item strong {
-            display: block;
-            margin-top: 5px;
-            color: #222;
-            font-size: 14px;
-        }
 
-        .certificate-demo-stamp {
+        /* =====================================================
+           ПЕЧАТЬ
+           ===================================================== */
+
+        .certificate-stamp {
+
             position: absolute;
-            right: 35px;
-            bottom: 25px;
-            z-index: 3;
-            width: 130px;
-            height: 130px;
+
+            right: 55px;
+            bottom: 45px;
+
+            width: 125px;
+            height: 125px;
+
             display: flex;
+
             align-items: center;
             justify-content: center;
-            text-align: center;
-            border: 3px solid rgba(139, 30, 45, 0.7);
+
+            border: 4px double rgba(141,23,23,0.55);
+
             border-radius: 50%;
-            color: rgba(139, 30, 45, 0.8);
-            font-size: 11px;
-            font-weight: 900;
+
+            color: rgba(141,23,23,0.6);
+
+            text-align: center;
+
+            font-family: Arial, sans-serif;
+
+            font-size: 10px;
+
+            font-weight: bold;
+
             transform: rotate(-12deg);
+
+            opacity: 0.75;
         }
+
+        .certificate-stamp::before {
+
+            content: "";
+
+            position: absolute;
+
+            inset: 9px;
+
+            border: 1px solid rgba(141,23,23,0.55);
+
+            border-radius: 50%;
+        }
+
+
+        /* =====================================================
+           ПОМЕТКА ОБРАЗЦА
+           ===================================================== */
+
+        .certificate-warning {
+
+            max-width: 850px;
+
+            margin: 0 auto 15px;
+
+            padding: 12px 15px;
+
+            border-radius: 9px;
+
+            background: rgba(185, 35, 35, 0.12);
+
+            border: 1px solid rgba(220, 70, 70, 0.35);
+
+            color: #ffb4b4;
+
+            text-align: center;
+
+            font-family: Arial, sans-serif;
+
+            font-size: 12px;
+
+            font-weight: bold;
+
+            letter-spacing: 0.5px;
+        }
+
+
+        /* =====================================================
+           КНОПКИ
+           ===================================================== */
 
         .certificate-actions {
+
+            max-width: 850px;
+
+            margin: 0 auto 10px;
+
             display: flex;
+
             justify-content: center;
+
             gap: 12px;
-            margin-top: 20px;
+
+            flex-wrap: wrap;
         }
 
-        .certificate-actions button {
+        .certificate-action-button {
+
             padding: 13px 20px;
-            border-radius: 10px;
+
             border: 0;
-            font-weight: 700;
-        }
 
-        .certificate-print {
-            background: #8b1e2d;
+            border-radius: 9px;
+
+            background: #2d679f;
+
             color: white;
+
+            font-weight: bold;
+
+            cursor: pointer;
         }
 
-        .certificate-close {
-            background: rgba(255, 255, 255, 0.07);
-            color: #ddd;
-            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        .certificate-action-button:hover {
+
+            background: #397bb8;
         }
+
+        .certificate-action-button.secondary {
+
+            background: rgba(255,255,255,0.08);
+
+            border: 1px solid rgba(255,255,255,0.12);
+        }
+
+
+        /* =====================================================
+           МОБИЛЬНАЯ ВЕРСИЯ
+           ===================================================== */
 
         @media (max-width: 650px) {
 
-            .certificate-preview {
-                padding: 22px 15px;
-                border-width: 5px;
+            .certificate-window {
+                padding: 10px;
+            }
+
+            .certificate-paper {
+
+                padding: 40px 25px;
+
+                border-width: 7px;
             }
 
             .certificate-title {
-                font-size: 21px;
+
+                font-size: 24px;
             }
 
-            .certificate-names {
+            .certificate-body {
+
+                margin-top: 30px;
+
+                font-size: 14px;
+            }
+
+            .certificate-line {
+
+                display: block;
+            }
+
+            .certificate-label {
+
+                display: block;
+
+                margin-bottom: 3px;
+            }
+
+            .certificate-signatures {
+
                 grid-template-columns: 1fr;
-                gap: 15px;
+
+                gap: 25px;
             }
 
-            .certificate-footer {
-                grid-template-columns: 1fr;
-            }
+            .certificate-stamp {
 
-            .certificate-demo-stamp {
-                position: static;
-                margin: 25px auto 0;
+                position: relative;
+
+                right: auto;
+                bottom: auto;
+
+                margin: 30px auto 0;
             }
 
             .certificate-watermark {
+
                 font-size: 30px;
-            }
-
-            .certificate-actions {
-                flex-direction: column;
-            }
-
-            .certificate-actions button {
-                width: 100%;
             }
         }
 
@@ -346,6 +672,7 @@
 
 <main>
 
+
 <section class="hero">
 
     <div class="container hero-inner">
@@ -353,7 +680,7 @@
         <div class="hero-text">
 
             <div class="hero-label">
-                ● ГОСУДАРСТВЕННЫЕ УСЛУГИ
+                ● УЧЕБНЫЙ ЭЛЕКТРОННЫЙ СЕРВИС
             </div>
 
             <h1>
@@ -459,6 +786,7 @@
 
             </div>
 
+
             <div class="hero-card-bottom">
 
                 <div>
@@ -533,8 +861,8 @@
             </h3>
 
             <p>
-                Подача заявления на государственную
-                регистрацию заключения брака.
+                Подача заявления на регистрацию
+                заключения брака.
             </p>
 
             <button onclick="openApplication()">
@@ -555,11 +883,13 @@
             </h3>
 
             <p>
-                Государственная регистрация
+                Учебный раздел регистрации
                 рождения ребёнка.
             </p>
 
-            <button onclick="showMessage('Регистрация рождения')">
+            <button
+                onclick="showMessage('Регистрация рождения')"
+            >
                 Подробнее →
             </button>
 
@@ -577,11 +907,13 @@
             </h3>
 
             <p>
-                Государственная регистрация
+                Учебный раздел регистрации
                 смерти гражданина.
             </p>
 
-            <button onclick="showMessage('Регистрация смерти')">
+            <button
+                onclick="showMessage('Регистрация смерти')"
+            >
                 Подробнее →
             </button>
 
@@ -603,7 +935,9 @@
                 имени, фамилии или отчества.
             </p>
 
-            <button onclick="showMessage('Смена имени')">
+            <button
+                onclick="showMessage('Смена имени')"
+            >
                 Подробнее →
             </button>
 
@@ -621,11 +955,13 @@
             </h3>
 
             <p>
-                Получение повторных свидетельств
-                и справок.
+                Учебный раздел повторных
+                свидетельств и справок.
             </p>
 
-            <button onclick="showMessage('Повторные документы')">
+            <button
+                onclick="showMessage('Повторные документы')"
+            >
                 Подробнее →
             </button>
 
@@ -643,15 +979,18 @@
             </h3>
 
             <p>
-                Получение необходимых сведений
-                и документов.
+                Получение необходимых
+                учебных сведений.
             </p>
 
-            <button onclick="showMessage('Сведения и справки')">
+            <button
+                onclick="showMessage('Сведения и справки')"
+            >
                 Подробнее →
             </button>
 
         </div>
+
 
     </div>
 
@@ -694,9 +1033,8 @@
             </h3>
 
             <p>
-                Определите,
-                какое заявление
-                вам необходимо подать.
+                Определите, какое заявление
+                необходимо подать.
             </p>
 
         </div>
@@ -713,8 +1051,8 @@
             </h3>
 
             <p>
-                Укажите необходимые
-                сведения в электронной форме.
+                Укажите необходимые сведения
+                в электронной форме.
             </p>
 
         </div>
@@ -731,9 +1069,8 @@
             </h3>
 
             <p>
-                Проверьте данные
-                и отправьте заявление
-                на рассмотрение.
+                Проверьте данные и отправьте
+                заявление на рассмотрение.
             </p>
 
         </div>
@@ -746,12 +1083,12 @@
             </div>
 
             <h3>
-                Следите за статусом
+                Получите макет
             </h3>
 
             <p>
-                Используйте номер заявления,
-                чтобы узнать его статус.
+                После подачи можно открыть
+                учебный макет свидетельства.
             </p>
 
         </div>
@@ -844,8 +1181,8 @@
         </div>
 
         <p>
-            Мнения людей,
-            которые воспользовались сервисом.
+            Мнения людей, которые воспользовались
+            учебным сервисом.
         </p>
 
     </div>
@@ -882,8 +1219,7 @@
 
             <p>
                 Удобная форма подачи заявления.
-                Всё понятно и не пришлось долго
-                искать нужную информацию.
+                Всё понятно.
             </p>
 
             <small>
@@ -921,8 +1257,7 @@
 
             <p>
                 Понравилось, что после отправки
-                заявления появляется номер,
-                по которому можно проверить статус.
+                появляется номер заявления.
             </p>
 
             <small>
@@ -960,15 +1295,14 @@
 
             <p>
                 Интерфейс простой и понятный.
-                Особенно удобно, что все основные
-                услуги находятся на одной странице.
             </p>
 
             <small>
-                Государственные услуги
+                Учебный сервис
             </small>
 
         </div>
+
 
     </div>
 
@@ -1034,10 +1368,9 @@
 
             <div class="faq-answer">
 
-                Выберите необходимую услугу,
-                заполните электронную форму
-                и отправьте заявление
-                на рассмотрение.
+                Выберите услугу, заполните
+                электронную форму и отправьте
+                заявление.
 
             </div>
 
@@ -1058,9 +1391,8 @@
 
             <div class="faq-answer">
 
-                После отправки заявления
-                ему будет присвоен
-                уникальный номер.
+                После отправки заявления ему
+                присваивается учебный номер.
 
             </div>
 
@@ -1093,7 +1425,7 @@
 
             <button onclick="toggleFaq(this)">
 
-                Можно ли изменить заявление?
+                Что такое свидетельство?
 
                 <span>
                     +
@@ -1103,8 +1435,10 @@
 
             <div class="faq-answer">
 
-                Возможность изменения зависит
-                от текущего статуса заявления.
+                Это демонстрационный макет
+                электронного документа для
+                учебного проекта. Он не имеет
+                юридической силы.
 
             </div>
 
@@ -1160,6 +1494,7 @@
 
 </section>
 
+
 </main>
 
 
@@ -1178,8 +1513,8 @@
         </div>
 
         <p>
-            Учебный демонстрационный
-            проект электронной подачи заявлений.
+            Учебный проект электронной
+            подачи заявлений.
         </p>
 
     </div>
@@ -1219,7 +1554,7 @@
 <div class="footer-bottom">
 
     © 2026 ЗАГС ONLINE.
-    Учебный проект. Не является государственным сайтом.
+    Учебный проект.
 
 </div>
 
@@ -1227,8 +1562,7 @@
 
 
 <!-- ==================================================
-     МОДАЛЬНОЕ ОКНО
-     РЕГИСТРАЦИЯ БРАКА
+     МОДАЛЬНОЕ ОКНО РЕГИСТРАЦИИ БРАКА
 ================================================== -->
 
 <div
@@ -1263,8 +1597,6 @@
 
     <form id="applicationForm">
 
-
-        <!-- ЖЕНИХ -->
 
         <div class="form-section">
 
@@ -1377,8 +1709,6 @@
         </div>
 
 
-        <!-- НЕВЕСТА -->
-
         <div class="form-section">
 
             <div class="form-section-title">
@@ -1489,8 +1819,6 @@
 
         </div>
 
-
-        <!-- РЕГИСТРАЦИЯ -->
 
         <div class="form-section">
 
@@ -1606,8 +1934,6 @@
         </div>
 
 
-        <!-- КОНТАКТЫ -->
-
         <div class="form-section">
 
             <div class="form-section-title">
@@ -1655,8 +1981,6 @@
         </div>
 
 
-        <!-- СОГЛАСИЕ -->
-
         <label class="checkbox-row">
 
             <input
@@ -1686,7 +2010,9 @@
     </form>
 
 
-    <!-- УСПЕШНАЯ ОТПРАВКА -->
+    <!-- ==================================================
+         УСПЕШНАЯ ОТПРАВКА
+    ================================================== -->
 
     <div
         class="application-success"
@@ -1763,15 +2089,13 @@
         </div>
 
 
-        <!-- НОВАЯ КНОПКА -->
-
         <button
             type="button"
             class="button button-primary"
             style="margin-top:25px;"
             onclick="openCertificate()"
         >
-            Открыть электронный образец
+            Открыть учебное свидетельство
         </button>
 
 
@@ -1825,13 +2149,11 @@
             Поделитесь своим мнением о сервисе.
         </p>
 
-
         <form id="reviewForm">
 
             <div class="form-section">
 
                 <div class="form-grid">
-
 
                     <div class="form-field">
 
@@ -1920,7 +2242,6 @@
 
                     </div>
 
-
                 </div>
 
             </div>
@@ -1970,82 +2291,65 @@
 
 
 <!-- ==================================================
-     ЭЛЕКТРОННОЕ СВИДЕТЕЛЬСТВО
-     ТОЛЬКО УЧЕБНЫЙ ОБРАЗЕЦ
+     УЧЕБНОЕ СВИДЕТЕЛЬСТВО
 ================================================== -->
 
 <div
-    class="modal"
+    class="certificate-modal"
     id="certificateModal"
 >
 
-    <div class="modal-window certificate-modal">
+
+    <div class="certificate-window">
+
 
         <button
-            class="modal-close"
+            class="certificate-close"
             onclick="closeCertificate()"
         >
             ×
         </button>
 
 
-        <div class="section-label">
-            ЭЛЕКТРОННЫЙ ДОКУМЕНТ
+        <div class="certificate-warning">
+
+            ⚠ ОБРАЗЕЦ — УЧЕБНЫЙ МАКЕТ.
+            НЕ ЯВЛЯЕТСЯ ОФИЦИАЛЬНЫМ ДОКУМЕНТОМ
+            И НЕ ИМЕЕТ ЮРИДИЧЕСКОЙ СИЛЫ.
+
         </div>
 
 
-        <h2>
-            Свидетельство — учебный образец
-        </h2>
-
-
-        <p class="modal-description">
-
-            Ниже отображается демонстрационный макет,
-            сформированный на основе введённых данных.
-
-        </p>
-
-
-        <div class="certificate-preview">
-
-
-            <div class="certificate-warning">
-
-                УЧЕБНЫЙ ОБРАЗЕЦ • НЕ ЯВЛЯЕТСЯ ОФИЦИАЛЬНЫМ ДОКУМЕНТОМ
-                • НЕ ИМЕЕТ ЮРИДИЧЕСКОЙ СИЛЫ
-
-            </div>
+        <div class="certificate-paper">
 
 
             <div class="certificate-watermark">
-
-                УЧЕБНЫЙ ОБРАЗЕЦ
-
+                ОБРАЗЕЦ
             </div>
 
 
-            <div class="certificate-header">
+            <div class="certificate-top">
 
-                <div class="certificate-header-small">
 
-                    ДЕМОНСТРАЦИОННЫЙ ПРОЕКТ «ЗАГС ONLINE»
+                <div class="certificate-emblem">
+                    ♥
+                </div>
 
+
+                <div class="certificate-country">
+                    УЧЕБНЫЙ ЭЛЕКТРОННЫЙ СЕРВИС
                 </div>
 
 
                 <div class="certificate-title">
-
-                    Свидетельство
-
+                    СВИДЕТЕЛЬСТВО
                 </div>
 
 
                 <div class="certificate-subtitle">
-
-                    о заключении брака — учебный макет
-
+                    о заключении брака
                 </div>
+
 
             </div>
 
@@ -2053,128 +2357,168 @@
             <div class="certificate-body">
 
 
-                <div class="certificate-row">
+                <div class="certificate-line">
 
-                    <div class="certificate-label">
-                        Учебный номер
-                    </div>
+                    <span class="certificate-label">
+                        Муж:
+                    </span>
 
-                    <div
+                    <span
                         class="certificate-value"
-                        id="certificateNumber"
-                    >
-                        ZAGS-000000
-                    </div>
-
-                </div>
-
-
-                <div class="certificate-names">
-
-
-                    <div class="certificate-person">
-
-                        <div class="certificate-person-title">
-                            Жених
-                        </div>
-
-                        <div
-                            class="certificate-person-name"
-                            id="certificateGroom"
-                        >
-                            Иванов Иван Иванович
-                        </div>
-
-                    </div>
-
-
-                    <div class="certificate-person">
-
-                        <div class="certificate-person-title">
-                            Невеста
-                        </div>
-
-                        <div
-                            class="certificate-person-name"
-                            id="certificateBride"
-                        >
-                            Иванова Анна Ивановна
-                        </div>
-
-                    </div>
-
-
-                </div>
-
-
-                <div class="certificate-row">
-
-                    <div class="certificate-label">
-                        Дата регистрации
-                    </div>
-
-                    <div
-                        class="certificate-value"
-                        id="certificateDate"
+                        id="certificateGroom"
                     >
                         —
-                    </div>
+                    </span>
 
                 </div>
 
 
-                <div class="certificate-row">
+                <div class="certificate-line">
 
-                    <div class="certificate-label">
-                        Место регистрации
-                    </div>
+                    <span class="certificate-label">
+                        Дата рождения:
+                    </span>
 
-                    <div
+                    <span
+                        class="certificate-value"
+                        id="certificateGroomBirth"
+                    >
+                        —
+                    </span>
+
+                </div>
+
+
+                <div class="certificate-line">
+
+                    <span class="certificate-label">
+                        Жена:
+                    </span>
+
+                    <span
+                        class="certificate-value"
+                        id="certificateBride"
+                    >
+                        —
+                    </span>
+
+                </div>
+
+
+                <div class="certificate-line">
+
+                    <span class="certificate-label">
+                        Дата рождения:
+                    </span>
+
+                    <span
+                        class="certificate-value"
+                        id="certificateBrideBirth"
+                    >
+                        —
+                    </span>
+
+                </div>
+
+
+                <div class="certificate-marriage-text">
+
+                    Брак заключён
+
+                    <strong id="certificateMarriageDate">
+                        —
+                    </strong>
+
+                    в
+
+                    <strong id="certificateMarriageTime">
+                        —
+                    </strong>
+
+                </div>
+
+
+                <div class="certificate-line">
+
+                    <span class="certificate-label">
+                        Место регистрации:
+                    </span>
+
+                    <span
                         class="certificate-value"
                         id="certificatePlace"
                     >
                         —
+                    </span>
+
+                </div>
+
+
+                <div class="certificate-number">
+
+
+                    <div>
+
+                        Запись №
+
+                        <strong id="certificateRecord">
+                            —
+                        </strong>
+
                     </div>
 
+
+                    <div>
+
+                        Дата выдачи:
+
+                        <strong id="certificateIssueDate">
+                            —
+                        </strong>
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="certificate-signatures">
+
+
+                    <div class="certificate-signature">
+
+                        <div class="signature-line"></div>
+
+                        Подпись заявителя
+
+                    </div>
+
+
+                    <div class="certificate-signature">
+
+                        <div class="signature-line"></div>
+
+                        Ответственное лицо
+                        <br>
+                        (учебный макет)
+
+                    </div>
+
+
                 </div>
 
 
             </div>
 
 
-            <div class="certificate-footer">
+            <div class="certificate-stamp">
 
+                УЧЕБНЫЙ МАКЕТ
 
-                <div class="certificate-footer-item">
+                <br>
 
-                    Сформировано электронной системой
-
-                    <strong>
-                        ЗАГС ONLINE
-                    </strong>
-
-                </div>
-
-
-                <div class="certificate-footer-item">
-
-                    Назначение
-
-                    <strong>
-                        Учебная демонстрация
-                    </strong>
-
-                </div>
-
-
-            </div>
-
-
-            <div class="certificate-demo-stamp">
-
-                УЧЕБНЫЙ<br>
-                ОБРАЗЕЦ<br>
-                НЕ ОФИЦИАЛЬНО
+                НЕ ОФИЦИАЛЬНЫЙ
+                ДОКУМЕНТ
 
             </div>
 
@@ -2184,22 +2528,22 @@
 
         <div class="certificate-actions">
 
+
             <button
-                type="button"
-                class="certificate-print"
-                onclick="printCertificate()"
+                class="certificate-action-button"
+                onclick="window.print()"
             >
-                🖨 Печать образца
+                🖨 Печать макета
             </button>
 
 
             <button
-                type="button"
-                class="certificate-close"
+                class="certificate-action-button secondary"
                 onclick="closeCertificate()"
             >
                 Закрыть
             </button>
+
 
         </div>
 
@@ -2224,110 +2568,19 @@
 
 
 <!-- ==================================================
-     ДОПОЛНИТЕЛЬНЫЙ КОД СВИДЕТЕЛЬСТВА
+     УПРАВЛЕНИЕ ОКНОМ СВИДЕТЕЛЬСТВА
 ================================================== -->
 
 <script>
 
 function openCertificate() {
 
-    const modal = document.getElementById("certificateModal");
+    const modal =
+        document.getElementById("certificateModal");
 
     if (!modal) {
         return;
     }
-
-    const groomSurname =
-        document.getElementById("groomSurname")?.value || "";
-
-    const groomName =
-        document.getElementById("groomName")?.value || "";
-
-    const groomPatronymic =
-        document.getElementById("groomPatronymic")?.value || "";
-
-    const brideSurname =
-        document.getElementById("brideSurname")?.value || "";
-
-    const brideName =
-        document.getElementById("brideName")?.value || "";
-
-    const bridePatronymic =
-        document.getElementById("bridePatronymic")?.value || "";
-
-    const marriageDate =
-        document.getElementById("marriageDate")?.value || "";
-
-    const zagsPlace =
-        document.getElementById("zagsPlace")?.value || "";
-
-    const applicationNumber =
-        document.getElementById("applicationNumber")?.textContent ||
-        "ZAGS-000000";
-
-
-    const groomFullName =
-        [
-            groomSurname,
-            groomName,
-            groomPatronymic
-        ]
-        .filter(Boolean)
-        .join(" ");
-
-
-    const brideFullName =
-        [
-            brideSurname,
-            brideName,
-            bridePatronymic
-        ]
-        .filter(Boolean)
-        .join(" ");
-
-
-    document.getElementById("certificateGroom").textContent =
-        groomFullName || "Не указано";
-
-
-    document.getElementById("certificateBride").textContent =
-        brideFullName || "Не указано";
-
-
-    document.getElementById("certificateNumber").textContent =
-        applicationNumber.trim();
-
-
-    document.getElementById("certificatePlace").textContent =
-        zagsPlace || "Не указано";
-
-
-    if (marriageDate) {
-
-        const dateParts =
-            marriageDate.split("-");
-
-        if (dateParts.length === 3) {
-
-            document.getElementById("certificateDate").textContent =
-                dateParts[2] + "." +
-                dateParts[1] + "." +
-                dateParts[0];
-
-        } else {
-
-            document.getElementById("certificateDate").textContent =
-                marriageDate;
-
-        }
-
-    } else {
-
-        document.getElementById("certificateDate").textContent =
-            "Не указано";
-
-    }
-
 
     modal.classList.add("active");
 
@@ -2339,303 +2592,85 @@ function closeCertificate() {
     const modal =
         document.getElementById("certificateModal");
 
-    if (modal) {
-
-        modal.classList.remove("active");
-
+    if (!modal) {
+        return;
     }
+
+    modal.classList.remove("active");
 
 }
 
 
-function printCertificate() {
+function fillCertificate(data) {
 
-    const certificate =
-        document.querySelector(".certificate-preview");
-
-    if (!certificate) {
+    if (!data) {
         return;
     }
 
 
-    const printWindow =
-        window.open(
-            "",
-            "_blank",
-            "width=1100,height=800"
-        );
-
-
-    if (!printWindow) {
-
-        alert(
-            "Браузер заблокировал новое окно. Разрешите всплывающие окна для сайта."
-        );
-
-        return;
-
-    }
-
-
-    printWindow.document.write(`
-
-        <!DOCTYPE html>
-
-        <html lang="ru">
-
-        <head>
-
-            <meta charset="UTF-8">
-
-            <title>
-                Учебный образец
-            </title>
-
-            <style>
-
-                * {
-                    box-sizing: border-box;
-                }
-
-                body {
-                    margin: 0;
-                    padding: 30px;
-                    background: white;
-                    font-family: Arial, sans-serif;
-                }
-
-                .certificate {
-                    position: relative;
-                    padding: 35px;
-                    background: #f5f0e6;
-                    color: #222;
-                    border: 8px solid #8b1e2d;
-                    box-shadow:
-                        inset 0 0 0 2px #d2b48c;
-                    overflow: hidden;
-                }
-
-                .warning {
-                    position: relative;
-                    z-index: 2;
-                    margin-bottom: 25px;
-                    padding: 10px;
-                    text-align: center;
-                    background: #8b1e2d;
-                    color: white;
-                    font-size: 12px;
-                    font-weight: 900;
-                }
-
-                .watermark {
-                    position: absolute;
-                    left: 50%;
-                    top: 50%;
-                    transform:
-                        translate(-50%, -50%)
-                        rotate(-25deg);
-                    color: rgba(139, 30, 45, 0.12);
-                    font-size: 60px;
-                    font-weight: 900;
-                    white-space: nowrap;
-                }
-
-                .header {
-                    position: relative;
-                    z-index: 2;
-                    text-align: center;
-                }
-
-                .small {
-                    color: #555;
-                    font-size: 13px;
-                }
-
-                .title {
-                    margin-top: 10px;
-                    color: #8b1e2d;
-                    font-family: Georgia, serif;
-                    font-size: 34px;
-                    font-weight: bold;
-                    text-transform: uppercase;
-                }
-
-                .subtitle {
-                    margin-top: 8px;
-                    color: #555;
-                }
-
-                .body {
-                    position: relative;
-                    z-index: 2;
-                }
-
-                .row {
-                    margin: 25px 0;
-                    text-align: center;
-                }
-
-                .label {
-                    color: #777;
-                    font-size: 11px;
-                    text-transform: uppercase;
-                }
-
-                .value {
-                    margin-top: 6px;
-                    font-family: Georgia, serif;
-                    font-size: 24px;
-                    font-weight: bold;
-                }
-
-                .names {
-                    display: grid;
-                    grid-template-columns: 1fr 1fr;
-                    gap: 30px;
-                    margin: 35px 0;
-                }
-
-                .person {
-                    padding: 20px;
-                    text-align: center;
-                    border: 1px solid rgba(139,30,45,.3);
-                }
-
-                .person-title {
-                    color: #8b1e2d;
-                    font-size: 12px;
-                    font-weight: bold;
-                    margin-bottom: 12px;
-                }
+    const groomSurname =
+        data.groomSurname || "";
 
-                .person-name {
-                    font-family: Georgia, serif;
-                    font-size: 20px;
-                    font-weight: bold;
-                }
+    const groomName =
+        data.groomName || "";
 
-                .footer {
-                    position: relative;
-                    z-index: 2;
-                    display: grid;
-                    grid-template-columns: 1fr 1fr;
-                    gap: 30px;
-                    margin-top: 40px;
-                    padding-top: 20px;
-                    border-top: 1px solid #aaa;
-                    font-size: 12px;
-                }
+    const groomPatronymic =
+        data.groomPatronymic || "";
 
-                .stamp {
-                    position: absolute;
-                    right: 40px;
-                    bottom: 25px;
-                    width: 120px;
-                    height: 120px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    text-align: center;
-                    border: 3px solid rgba(139,30,45,.7);
-                    border-radius: 50%;
-                    color: rgba(139,30,45,.8);
-                    font-size: 10px;
-                    font-weight: bold;
-                    transform: rotate(-12deg);
-                }
 
-                @media print {
+    const brideSurname =
+        data.brideSurname || "";
 
-                    body {
-                        padding: 0;
-                    }
+    const brideName =
+        data.brideName || "";
 
-                    .certificate {
-                        box-shadow: none;
-                    }
+    const bridePatronymic =
+        data.bridePatronymic || "";
 
-                }
 
-            </style>
+    document.getElementById("certificateGroom").textContent =
+        `${groomSurname} ${groomName} ${groomPatronymic}`.trim();
 
-        </head>
 
-        <body>
+    document.getElementById("certificateBride").textContent =
+        `${brideSurname} ${brideName} ${bridePatronymic}`.trim();
 
-            <div class="certificate">
 
-                <div class="warning">
+    document.getElementById("certificateGroomBirth").textContent =
+        data.groomBirth || "—";
 
-                    УЧЕБНЫЙ ОБРАЗЕЦ •
-                    НЕ ЯВЛЯЕТСЯ ОФИЦИАЛЬНЫМ ДОКУМЕНТОМ •
-                    НЕ ИМЕЕТ ЮРИДИЧЕСКОЙ СИЛЫ
 
-                </div>
+    document.getElementById("certificateBrideBirth").textContent =
+        data.brideBirth || "—";
 
 
-                <div class="watermark">
-                    УЧЕБНЫЙ ОБРАЗЕЦ
-                </div>
+    document.getElementById("certificateMarriageDate").textContent =
+        data.marriageDate || "—";
 
 
-                <div class="header">
+    document.getElementById("certificateMarriageTime").textContent =
+        data.marriageTime || "—";
 
-                    <div class="small">
-                        ДЕМОНСТРАЦИОННЫЙ ПРОЕКТ «ЗАГС ONLINE»
-                    </div>
 
-                    <div class="title">
-                        Свидетельство
-                    </div>
+    document.getElementById("certificatePlace").textContent =
+        data.zagsPlace || "—";
 
-                    <div class="subtitle">
-                        о заключении брака — учебный макет
-                    </div>
 
-                </div>
+    document.getElementById("certificateRecord").textContent =
+        data.applicationNumber || "—";
 
 
-                <div class="body">
-
-                    ${certificate.innerHTML}
-
-                </div>
-
-            </div>
-
-
-            <script>
-
-                window.onload = function () {
-
-                    window.print();
-
-                };
-
-            <\/script>
-
-        </body>
-
-        </html>
-
-    `);
-
-
-    printWindow.document.close();
+    document.getElementById("certificateIssueDate").textContent =
+        new Date().toLocaleDateString("ru-RU");
 
 }
 
 
 document.addEventListener(
-    "click",
+    "keydown",
     function(event) {
 
-        const certificateModal =
-            document.getElementById("certificateModal");
-
-        if (
-            event.target === certificateModal
-        ) {
+        if (event.key === "Escape") {
 
             closeCertificate();
 
@@ -2643,6 +2678,21 @@ document.addEventListener(
 
     }
 );
+
+
+document.getElementById("certificateModal")
+    ?.addEventListener(
+        "click",
+        function(event) {
+
+            if (event.target === this) {
+
+                closeCertificate();
+
+            }
+
+        }
+    );
 
 </script>
 
