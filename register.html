@@ -9,7 +9,308 @@
 
 <title>Регистрация — ЗАГС ONLINE</title>
 
-<link rel="stylesheet" href="style.css">
+
+<style>
+
+*{
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+
+body{
+
+    min-height:100vh;
+
+    margin:0;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+
+    background:
+    linear-gradient(
+        135deg,
+        #07182d,
+        #12365b
+    );
+
+    color:white;
+
+}
+
+
+
+.register-box{
+
+
+    width:100%;
+
+    max-width:450px;
+
+
+    padding:40px;
+
+
+    background:
+
+    rgba(255,255,255,0.08);
+
+
+    border:
+
+    1px solid rgba(255,255,255,0.15);
+
+
+    border-radius:22px;
+
+
+    backdrop-filter:blur(12px);
+
+
+    box-shadow:
+
+    0 30px 80px rgba(0,0,0,0.45);
+
+}
+
+
+
+.logo{
+
+
+    text-align:center;
+
+    margin-bottom:30px;
+
+}
+
+
+
+.logo-heart{
+
+    width:70px;
+
+    height:70px;
+
+    margin:auto;
+
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+
+    border-radius:50%;
+
+
+    background:#2d679f;
+
+
+    font-size:35px;
+
+
+}
+
+
+
+.logo h1{
+
+    margin:15px 0 5px;
+
+    font-size:28px;
+
+}
+
+
+
+.logo p{
+
+    margin:0;
+
+    color:#b9cce2;
+
+    font-size:14px;
+
+}
+
+
+
+
+h2{
+
+    text-align:center;
+
+    margin-bottom:25px;
+
+}
+
+
+
+
+label{
+
+    display:block;
+
+    margin-bottom:7px;
+
+    color:#dce8f5;
+
+}
+
+
+
+input{
+
+
+    width:100%;
+
+
+    padding:15px;
+
+
+    margin-bottom:18px;
+
+
+    border-radius:12px;
+
+
+    border:none;
+
+
+    outline:none;
+
+
+    background:
+
+    rgba(255,255,255,0.12);
+
+
+    color:white;
+
+
+    font-size:15px;
+
+
+}
+
+
+
+input::placeholder{
+
+    color:#b5c4d5;
+
+}
+
+
+
+
+button{
+
+
+    width:100%;
+
+
+    padding:15px;
+
+
+    border:none;
+
+
+    border-radius:12px;
+
+
+    cursor:pointer;
+
+
+    background:#2d679f;
+
+
+    color:white;
+
+
+    font-size:16px;
+
+
+    font-weight:bold;
+
+
+    transition:.2s;
+
+}
+
+
+
+button:hover{
+
+
+    background:#397bb8;
+
+
+    transform:translateY(-2px);
+
+}
+
+
+
+.bottom{
+
+
+    text-align:center;
+
+    margin-top:22px;
+
+
+    color:#c5d5e8;
+
+}
+
+
+
+a{
+
+
+    color:#6fb7ff;
+
+    text-decoration:none;
+
+    font-weight:bold;
+
+}
+
+
+
+a:hover{
+
+    text-decoration:underline;
+
+}
+
+
+
+@media(max-width:500px){
+
+
+.register-box{
+
+    margin:20px;
+
+    padding:30px 25px;
+
+}
+
+
+}
+
+
+
+</style>
+
 
 </head>
 
@@ -17,48 +318,28 @@
 <body>
 
 
-<div class="container" style="max-width:500px;margin:100px auto;">
+
+<div class="register-box">
+
+
+
+<div class="logo">
+
+
+<div class="logo-heart">
+
+♥
+
+</div>
 
 
 <h1>
-Регистрация
+ЗАГС ONLINE
 </h1>
 
 
-<input
-id="name"
-type="text"
-placeholder="Ваше имя"
-style="width:100%;padding:15px;margin:10px 0;"
->
-
-
-<input
-id="email"
-type="email"
-placeholder="Email"
-style="width:100%;padding:15px;margin:10px 0;"
->
-
-
-<input
-id="password"
-type="password"
-placeholder="Пароль"
-style="width:100%;padding:15px;margin:10px 0;"
->
-
-
-<button onclick="register()">
-Создать аккаунт
-</button>
-
-
 <p>
-Уже есть аккаунт?
-<a href="login.html">
-Войти
-</a>
+Государственная регистрация
 </p>
 
 
@@ -66,62 +347,202 @@ style="width:100%;padding:15px;margin:10px 0;"
 
 
 
+
+<h2>
+Создание аккаунта
+</h2>
+
+
+
+
+<label>
+Имя
+</label>
+
+
+<input
+
+id="name"
+
+type="text"
+
+placeholder="Ваше имя"
+
+>
+
+
+
+<label>
+Email
+</label>
+
+
+<input
+
+id="email"
+
+type="email"
+
+placeholder="example@mail.ru"
+
+>
+
+
+
+<label>
+Пароль
+</label>
+
+
+<input
+
+id="password"
+
+type="password"
+
+placeholder="Минимум 6 символов"
+
+>
+
+
+
+
+<button onclick="register()">
+
+Создать аккаунт
+
+</button>
+
+
+
+
+<div class="bottom">
+
+
+Уже есть аккаунт?
+
+
+<a href="login.html">
+
+Войти
+
+</a>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 
 <script>
 
+
+
 const client = window.supabase.createClient(
-    "https://urpyixokiisyyjyfqdqp.supabase.co",
-    "sb_publishable_7Pc3MuZhmSqFv3_R0gZnrg_8YUQyI0K"
+
+
+"https://urpyixokiisyyjyfqdqp.supabase.co",
+
+
+"sb_publishable_7Pc3MuZhmSqFv3_R0gZnrg_8YUQyI0K"
+
+
 );
 
 
-async function register() {
-
-    const name =
-        document.getElementById("name").value;
-
-    const email =
-        document.getElementById("email").value;
-
-    const password =
-        document.getElementById("password").value;
 
 
-    const { data, error } =
-        await client.auth.signUp({
 
-            email: email,
-
-            password: password,
-
-            options: {
-
-                data: {
-                    name: name
-                }
-
-            }
-
-        });
+async function register(){
 
 
-    if (error) {
 
-        alert(error.message);
+const name =
 
-        return;
-
-    }
+document.getElementById("name").value;
 
 
-    alert("Аккаунт создан!");
 
-    window.location.href = "login.html";
+const email =
+
+document.getElementById("email").value;
+
+
+
+const password =
+
+document.getElementById("password").value;
+
+
+
+
+const {data,error}=
+
+await client.auth.signUp({
+
+
+email:email,
+
+
+password:password,
+
+
+options:{
+
+
+data:{
+
+
+name:name
+
 
 }
 
+
+}
+
+
+});
+
+
+
+
+if(error){
+
+
+alert(error.message);
+
+
+return;
+
+
+}
+
+
+
+
+alert("Аккаунт успешно создан!");
+
+
+
+window.location.href="login.html";
+
+
+
+}
+
+
+
 </script>
+
 
 
 </body>
