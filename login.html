@@ -562,10 +562,9 @@ function showNotification(text, type = "success"){
 
 
     // перевод ошибки Supabase
-    if(text === "Invalid login credentials"){
-        text = "Неверный email или пароль";
-    }
-
+if(text.includes("Invalid login credentials")){
+    text = "Неверный email или пароль";
+}
 
     box.innerHTML =
     (type === "error" ? "⚠ " : "✓ ") + text;
