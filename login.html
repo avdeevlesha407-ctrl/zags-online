@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Вход — ЗАГС ONLINE</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+
+<div class="container" style="max-width:500px;margin:100px auto;">
+
+<h1>
+Вход
+</h1>
+
+
+<input
+id="email"
+type="email"
+placeholder="Email"
+style="width:100%;padding:15px;margin:10px 0;"
+>
+
+
+<input
+id="password"
+type="password"
+placeholder="Пароль"
+style="width:100%;padding:15px;margin:10px 0;"
+>
+
+
+<button onclick="login()">
+Войти
+</button>
+
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+<script>
+
+
+const client = window.supabase.createClient(
+
+"https://urpyixokiisyyjyfqdqp.supabase.co",
+
+"sb_publishable_7Pc3MuZhmSqFv3_R0gZnrg_8YUQyI0K"
+
+);
+
+
+
+async function login(){
+
+
+const email =
+document.getElementById("email").value;
+
+
+const password =
+document.getElementById("password").value;
+
+
+
+const {data,error} =
+await client.auth.signInWithPassword({
+
+email: email,
+
+password: password
+
+});
+
+
+
+if(error){
+
+alert(error.message);
+
+return;
+
+}
+
+
+
+alert("Вход выполнен!");
+
+
+window.location.href="account.html";
+
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>
