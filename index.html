@@ -1,0 +1,1937 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>ЗАГС ONLINE</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<!-- ==================================================
+     ШАПКА
+================================================== -->
+
+<header class="header">
+
+    <div class="container header-inner">
+
+
+        <div class="logo">
+
+            <div class="logo-icon">
+                ♥
+            </div>
+
+            <div>
+
+                <div class="logo-title">
+                    ЗАГС ONLINE
+                </div>
+
+                <div class="logo-subtitle">
+                    Государственная регистрация
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <nav class="nav">
+
+            <a href="#services">
+                Услуги
+            </a>
+
+            <a href="#how">
+                Как это работает
+            </a>
+
+            <a href="#status">
+                Заявления
+            </a>
+
+            <a href="#reviews">
+                Отзывы
+            </a>
+
+            <a href="#faq">
+                Вопросы
+            </a>
+
+            <a href="#contacts">
+                Контакты
+            </a>
+
+        </nav>
+
+
+
+        <button
+            class="header-button"
+            onclick="openApplication()"
+        >
+            Подать заявление
+        </button>
+
+
+    </div>
+
+</header>
+
+
+
+<!-- ==================================================
+     ГЛАВНЫЙ ЭКРАН
+================================================== -->
+
+<main>
+
+
+<section class="hero">
+
+    <div class="container hero-inner">
+
+
+        <div class="hero-text">
+
+
+            <div class="hero-label">
+                ● ГОСУДАРСТВЕННЫЕ УСЛУГИ
+            </div>
+
+
+            <h1>
+
+                Важные события
+
+                <span>
+                    вашей жизни
+                </span>
+
+            </h1>
+
+
+            <p>
+
+                Подавайте заявления на регистрацию
+                актов гражданского состояния
+                в удобном онлайн-формате.
+
+            </p>
+
+
+            <div class="hero-buttons">
+
+
+                <button
+                    class="button button-primary"
+                    onclick="openApplication()"
+                >
+                    Подать заявление
+                </button>
+
+
+                <button
+                    class="button button-secondary"
+                    onclick="scrollToStatus()"
+                >
+                    Мои заявления
+                </button>
+
+
+            </div>
+
+
+            <div class="hero-info">
+
+
+                <div>
+
+                    <strong>
+                        24/7
+                    </strong>
+
+                    <span>
+                        Приём заявлений
+                    </span>
+
+                </div>
+
+
+                <div>
+
+                    <strong>
+                        ONLINE
+                    </strong>
+
+                    <span>
+                        Удобная подача
+                    </span>
+
+                </div>
+
+
+                <div>
+
+                    <strong>
+                        100%
+                    </strong>
+
+                    <span>
+                        Контроль статуса
+                    </span>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+
+        <div class="hero-card">
+
+
+            <div class="building">
+
+
+                <div class="building-top">
+                    ЗАГС
+                </div>
+
+
+                <div class="building-roof"></div>
+
+
+                <div class="building-columns">
+
+                    <div class="column"></div>
+                    <div class="column"></div>
+                    <div class="column"></div>
+                    <div class="column"></div>
+                    <div class="column"></div>
+
+                </div>
+
+
+                <div class="building-door"></div>
+
+
+            </div>
+
+
+            <div class="hero-card-bottom">
+
+
+                <div>
+
+                    <small>
+                        Ваше заявление
+                    </small>
+
+                    <strong>
+                        Всегда под контролем
+                    </strong>
+
+                </div>
+
+
+                <div class="round-arrow">
+                    →
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- ==================================================
+     УСЛУГИ
+================================================== -->
+
+<section
+    class="services"
+    id="services"
+>
+
+
+<div class="container">
+
+
+    <div class="section-heading">
+
+
+        <div>
+
+            <div class="section-label">
+                НАШИ УСЛУГИ
+            </div>
+
+            <h2>
+                Государственные услуги
+            </h2>
+
+        </div>
+
+
+        <p>
+
+            Выберите необходимую услугу,
+            чтобы узнать подробности.
+
+        </p>
+
+
+    </div>
+
+
+
+    <div class="services-grid">
+
+
+        <div class="service-card">
+
+            <div class="service-icon">
+                ♥
+            </div>
+
+            <h3>
+                Регистрация брака
+            </h3>
+
+            <p>
+
+                Подача заявления на государственную
+                регистрацию заключения брака.
+
+            </p>
+
+            <button
+                onclick="openApplication()"
+            >
+                Подробнее →
+            </button>
+
+        </div>
+
+
+
+        <div class="service-card">
+
+            <div class="service-icon">
+                ♣
+            </div>
+
+            <h3>
+                Регистрация рождения
+            </h3>
+
+            <p>
+
+                Государственная регистрация
+                рождения ребёнка.
+
+            </p>
+
+            <button
+                onclick="showMessage('Регистрация рождения')"
+            >
+                Подробнее →
+            </button>
+
+        </div>
+
+
+
+        <div class="service-card">
+
+            <div class="service-icon">
+                ✦
+            </div>
+
+            <h3>
+                Регистрация смерти
+            </h3>
+
+            <p>
+
+                Государственная регистрация
+                смерти гражданина.
+
+            </p>
+
+            <button
+                onclick="showMessage('Регистрация смерти')"
+            >
+                Подробнее →
+            </button>
+
+        </div>
+
+
+
+        <div class="service-card">
+
+            <div class="service-icon">
+                A
+            </div>
+
+            <h3>
+                Смена имени
+            </h3>
+
+            <p>
+
+                Подача заявления на изменение
+                имени, фамилии или отчества.
+
+            </p>
+
+            <button
+                onclick="showMessage('Смена имени')"
+            >
+                Подробнее →
+            </button>
+
+        </div>
+
+
+
+        <div class="service-card">
+
+            <div class="service-icon">
+                ▤
+            </div>
+
+            <h3>
+                Повторные документы
+            </h3>
+
+            <p>
+
+                Получение повторных свидетельств
+                и справок.
+
+            </p>
+
+            <button
+                onclick="showMessage('Повторные документы')"
+            >
+                Подробнее →
+            </button>
+
+        </div>
+
+
+
+        <div class="service-card">
+
+            <div class="service-icon">
+                ⌕
+            </div>
+
+            <h3>
+                Сведения и справки
+            </h3>
+
+            <p>
+
+                Получение необходимых сведений
+                и документов.
+
+            </p>
+
+            <button
+                onclick="showMessage('Сведения и справки')"
+            >
+                Подробнее →
+            </button>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+</section>
+
+
+
+<!-- ==================================================
+     КАК ЭТО РАБОТАЕТ
+================================================== -->
+
+<section
+    class="how"
+    id="how"
+>
+
+
+<div class="container">
+
+
+    <div class="section-label">
+        ПРОСТОЙ ПРОЦЕСС
+    </div>
+
+
+    <h2>
+        Как это работает
+    </h2>
+
+
+
+    <div class="steps">
+
+
+        <div class="step">
+
+            <div class="step-number">
+                01
+            </div>
+
+            <h3>
+                Выберите услугу
+            </h3>
+
+            <p>
+
+                Определите,
+                какое заявление
+                вам необходимо подать.
+
+            </p>
+
+        </div>
+
+
+
+        <div class="step">
+
+            <div class="step-number">
+                02
+            </div>
+
+            <h3>
+                Заполните данные
+            </h3>
+
+            <p>
+
+                Укажите необходимые
+                сведения в электронной форме.
+
+            </p>
+
+        </div>
+
+
+
+        <div class="step">
+
+            <div class="step-number">
+                03
+            </div>
+
+            <h3>
+                Отправьте заявление
+            </h3>
+
+            <p>
+
+                Проверьте данные
+                и отправьте заявление
+                на рассмотрение.
+
+            </p>
+
+        </div>
+
+
+
+        <div class="step">
+
+            <div class="step-number">
+                04
+            </div>
+
+            <h3>
+                Следите за статусом
+            </h3>
+
+            <p>
+
+                Используйте номер заявления,
+                чтобы узнать его статус.
+
+            </p>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+</section>
+
+
+
+<!-- ==================================================
+     ЗАЯВЛЕНИЯ
+================================================== -->
+
+<section
+    class="status"
+    id="status"
+>
+
+
+<div class="container">
+
+
+    <div class="status-box">
+
+
+        <div class="status-text">
+
+
+            <div class="section-label">
+                МОИ ЗАЯВЛЕНИЯ
+            </div>
+
+
+            <h2>
+                Управление заявлениями
+            </h2>
+
+
+            <p>
+
+                Здесь можно проверить номер
+                поданного заявления и его текущий статус.
+
+            </p>
+
+
+        </div>
+
+
+
+        <div class="status-form">
+
+
+            <input
+                type="text"
+                id="statusNumber"
+                placeholder="Например: ZAGS-583214"
+            >
+
+
+            <button
+                onclick="checkStatus()"
+            >
+                Проверить
+            </button>
+
+
+            <div
+                id="statusResult"
+            ></div>
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- ==================================================
+     ОТЗЫВЫ
+================================================== -->
+
+<section
+    class="reviews"
+    id="reviews"
+>
+
+
+<div class="container">
+
+
+    <div class="section-heading">
+
+
+        <div>
+
+            <div class="section-label">
+                ОТЗЫВЫ
+            </div>
+
+            <h2>
+                Что говорят пользователи
+            </h2>
+
+        </div>
+
+
+        <p>
+
+            Мнения людей,
+            которые воспользовались сервисом.
+
+        </p>
+
+
+    </div>
+
+
+
+    <div class="reviews-grid">
+
+
+        <div class="review-card">
+
+
+            <div class="review-top">
+
+                <div class="review-avatar">
+                    А
+                </div>
+
+                <div>
+
+                    <strong>
+                        Анна
+                    </strong>
+
+                    <span>
+                        Краснодар
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="review-stars">
+                ★★★★★
+            </div>
+
+
+            <p>
+
+                Удобная форма подачи заявления.
+                Всё понятно и не пришлось долго
+                искать нужную информацию.
+
+            </p>
+
+
+            <small>
+                Регистрация брака
+            </small>
+
+
+        </div>
+
+
+
+        <div class="review-card">
+
+
+            <div class="review-top">
+
+                <div class="review-avatar">
+                    М
+                </div>
+
+                <div>
+
+                    <strong>
+                        Максим
+                    </strong>
+
+                    <span>
+                        Ростов-на-Дону
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="review-stars">
+                ★★★★★
+            </div>
+
+
+            <p>
+
+                Понравилось, что после отправки
+                заявления появляется номер,
+                по которому можно проверить статус.
+
+            </p>
+
+
+            <small>
+                Электронное заявление
+            </small>
+
+
+        </div>
+
+
+
+        <div class="review-card">
+
+
+            <div class="review-top">
+
+                <div class="review-avatar">
+                    Е
+                </div>
+
+                <div>
+
+                    <strong>
+                        Елена
+                    </strong>
+
+                    <span>
+                        Краснодар
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="review-stars">
+                ★★★★★
+            </div>
+
+
+            <p>
+
+                Интерфейс простой и понятный.
+                Особенно удобно, что все основные
+                услуги находятся на одной странице.
+
+            </p>
+
+
+            <small>
+                Государственные услуги
+            </small>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <div class="reviews-button-wrap">
+
+       <button 
+    class="button button-primary" 
+    onclick="openReviewModal()"
+>
+    Оставить отзыв
+</button>
+    </div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- ==================================================
+     FAQ
+================================================== -->
+
+<section
+    class="faq"
+    id="faq"
+>
+
+
+<div class="container">
+
+
+    <div class="section-heading">
+
+
+        <div>
+
+            <div class="section-label">
+                ПОМОЩЬ
+            </div>
+
+            <h2>
+                Частые вопросы
+            </h2>
+
+        </div>
+
+
+    </div>
+
+
+
+    <div class="faq-list">
+
+
+        <div class="faq-item">
+
+            <button
+                onclick="toggleFaq(this)"
+            >
+
+                Как подать заявление?
+
+                <span>
+                    +
+                </span>
+
+            </button>
+
+
+            <div class="faq-answer">
+
+                Выберите необходимую услугу,
+                заполните электронную форму
+                и отправьте заявление
+                на рассмотрение.
+
+            </div>
+
+        </div>
+
+
+
+        <div class="faq-item">
+
+            <button
+                onclick="toggleFaq(this)"
+            >
+
+                Где найти номер заявления?
+
+                <span>
+                    +
+                </span>
+
+            </button>
+
+
+            <div class="faq-answer">
+
+                После отправки заявления
+                ему будет присвоен
+                уникальный номер.
+
+            </div>
+
+        </div>
+
+
+
+        <div class="faq-item">
+
+            <button
+                onclick="toggleFaq(this)"
+            >
+
+                Можно ли проверить статус?
+
+                <span>
+                    +
+                </span>
+
+            </button>
+
+
+            <div class="faq-answer">
+
+                Да. Введите номер заявления
+                в разделе «Заявления».
+
+            </div>
+
+        </div>
+
+
+
+        <div class="faq-item">
+
+            <button
+                onclick="toggleFaq(this)"
+            >
+
+                Можно ли изменить заявление?
+
+                <span>
+                    +
+                </span>
+
+            </button>
+
+
+            <div class="faq-answer">
+
+                Возможность изменения зависит
+                от текущего статуса заявления.
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- ==================================================
+     CTA
+================================================== -->
+
+<section class="cta">
+
+
+<div class="container">
+
+
+    <div class="cta-box">
+
+
+        <div>
+
+            <div class="section-label">
+                ЗАГС ONLINE
+            </div>
+
+
+            <h2>
+                Начните оформление
+                прямо сейчас
+            </h2>
+
+
+            <p>
+
+                Выберите необходимую услугу
+                и заполните заявление.
+
+            </p>
+
+        </div>
+
+
+        <button
+            class="button button-light"
+            onclick="openApplication()"
+        >
+            Подать заявление →
+        </button>
+
+
+    </div>
+
+
+</div>
+
+</section>
+
+
+</main>
+
+
+
+<!-- ==================================================
+     FOOTER
+================================================== -->
+
+<footer id="contacts">
+
+
+<div class="container footer-inner">
+
+
+    <div>
+
+        <div class="logo-title">
+            ЗАГС ONLINE
+        </div>
+
+        <p>
+
+            Государственная регистрация
+            актов гражданского состояния.
+
+        </p>
+
+    </div>
+
+
+    <div class="footer-links">
+
+        <a href="#services">
+            Услуги
+        </a>
+
+        <a href="#how">
+            Как это работает
+        </a>
+
+        <a href="#status">
+            Заявления
+        </a>
+
+        <a href="#reviews">
+            Отзывы
+        </a>
+
+        <a href="#faq">
+            Вопросы
+        </a>
+
+        <a href="#contacts">
+            Контакты
+        </a>
+
+    </div>
+
+
+</div>
+
+
+
+<div class="footer-bottom">
+
+    © 2026 ЗАГС ONLINE.
+    Учебный проект.
+
+</div>
+
+
+</footer>
+
+
+
+<!-- ==================================================
+     МОДАЛЬНОЕ ОКНО
+     РЕГИСТРАЦИЯ БРАКА
+================================================== -->
+
+<div
+    class="modal"
+    id="applicationModal"
+>
+
+
+<div class="modal-window marriage-modal">
+
+
+    <button
+        class="modal-close"
+        onclick="closeApplication()"
+    >
+        ×
+    </button>
+
+
+
+    <div class="section-label">
+        РЕГИСТРАЦИЯ БРАКА
+    </div>
+
+
+    <h2>
+        Подача заявления
+    </h2>
+
+
+    <p class="modal-description">
+
+        Заполните данные будущих супругов.
+
+    </p>
+
+
+
+    <form id="applicationForm">
+
+
+
+        <!-- ЖЕНИХ -->
+
+        <div class="form-section">
+
+
+            <div class="form-section-title">
+
+                👤 Данные жениха
+
+            </div>
+
+
+            <div class="form-grid">
+
+
+                <div class="form-field">
+
+                    <label>
+                        Фамилия
+                    </label>
+
+                    <input
+                        type="text"
+                        id="groomSurname"
+                        placeholder="Иванов"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-field">
+
+                    <label>
+                        Имя
+                    </label>
+
+                    <input
+                        type="text"
+                        id="groomName"
+                        placeholder="Иван"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-field">
+
+                    <label>
+                        Отчество
+                    </label>
+
+                    <input
+                        type="text"
+                        id="groomPatronymic"
+                        placeholder="Иванович"
+                    >
+
+                </div>
+
+
+                <div class="form-field">
+
+                    <label>
+                        Дата рождения
+                    </label>
+
+                    <input
+                        type="date"
+                        id="groomBirth"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-field">
+
+                    <label>
+                        Серия паспорта
+                    </label>
+
+                    <input
+                        type="text"
+                        id="groomPassportSeries"
+                        placeholder="0000"
+                        maxlength="4"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-field">
+
+                    <label>
+                        Номер паспорта
+                    </label>
+
+                    <input
+                        type="text"
+                        id="groomPassportNumber"
+                        placeholder="000000"
+                        maxlength="6"
+                        required
+                    >
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+
+        <!-- НЕВЕСТА -->
+
+        <div class="form-section">
+
+
+            <div class="form-section-title">
+
+                👰 Данные невесты
+
+            </div>
+
+
+            <div class="form-grid">
+
+
+                <div class="form-field">
+
+                    <label>
+                        Фамилия
+                    </label>
+
+                    <input
+                        type="text"
+                        id="brideSurname"
+                        placeholder="Иванова"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-field">
+
+                    <label>
+                        Имя
+                    </label>
+
+                    <input
+                        type="text"
+                        id="brideName"
+                        placeholder="Анна"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-field">
+
+                    <label>
+                        Отчество
+                    </label>
+
+                    <input
+                        type="text"
+                        id="bridePatronymic"
+                        placeholder="Ивановна"
+                    >
+
+                </div>
+
+
+                <div class="form-field">
+
+                    <label>
+                        Дата рождения
+                    </label>
+
+                    <input
+                        type="date"
+                        id="brideBirth"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-field">
+
+                    <label>
+                        Серия паспорта
+                    </label>
+
+                    <input
+                        type="text"
+                        id="bridePassportSeries"
+                        placeholder="0000"
+                        maxlength="4"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-field">
+
+                    <label>
+                        Номер паспорта
+                    </label>
+
+                    <input
+                        type="text"
+                        id="bridePassportNumber"
+                        placeholder="000000"
+                        maxlength="6"
+                        required
+                    >
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+
+        <!-- РЕГИСТРАЦИЯ -->
+
+        <div class="form-section">
+
+
+            <div class="form-section-title">
+
+                💍 Данные регистрации
+
+            </div>
+
+
+            <div class="form-grid">
+
+
+                <div class="form-field">
+
+                    <label>
+                        Желаемая дата
+                    </label>
+
+                    <input
+                        type="date"
+                        id="marriageDate"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-field">
+
+                    <label>
+                        Время
+                    </label>
+
+                    <select
+                        id="marriageTime"
+                        required
+                    >
+
+                        <option value="">
+                            Выберите время
+                        </option>
+
+                        <option value="10:00">
+                            10:00
+                        </option>
+
+                        <option value="11:00">
+                            11:00
+                        </option>
+
+                        <option value="12:00">
+                            12:00
+                        </option>
+
+                        <option value="13:00">
+                            13:00
+                        </option>
+
+                        <option value="14:00">
+                            14:00
+                        </option>
+
+                        <option value="15:00">
+                            15:00
+                        </option>
+
+                        <option value="16:00">
+                            16:00
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-field form-field-full">
+
+                    <label>
+                        Место регистрации
+                    </label>
+
+                    <select
+                        id="zagsPlace"
+                        required
+                    >
+
+                        <option value="">
+                            Выберите отдел ЗАГС
+                        </option>
+
+                        <option value="Центральный отдел ЗАГС">
+                            Центральный отдел ЗАГС
+                        </option>
+
+                        <option value="Западный отдел ЗАГС">
+                            Западный отдел ЗАГС
+                        </option>
+
+                        <option value="Восточный отдел ЗАГС">
+                            Восточный отдел ЗАГС
+                        </option>
+
+                        <option value="Дворец бракосочетания">
+                            Дворец бракосочетания
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+
+        <!-- КОНТАКТЫ -->
+
+        <div class="form-section">
+
+
+            <div class="form-section-title">
+
+                📞 Контактные данные
+
+            </div>
+
+
+            <div class="form-grid">
+
+
+                <div class="form-field">
+
+                    <label>
+                        Телефон
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="contactPhone"
+                        placeholder="+7 (999) 123-45-67"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-field">
+
+                    <label>
+                        Электронная почта
+                    </label>
+
+                    <input
+                        type="email"
+                        id="contactEmail"
+                        placeholder="example@mail.ru"
+                        required
+                    >
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+
+        <!-- СОГЛАСИЕ -->
+
+        <label class="checkbox-row">
+
+
+            <input
+                type="checkbox"
+                id="agreement"
+                required
+            >
+
+
+            <span>
+
+                Я подтверждаю правильность
+                указанных данных и согласен
+                на обработку предоставленной
+                информации.
+
+            </span>
+
+
+        </label>
+
+
+
+        <button
+            type="submit"
+            class="submit-button"
+        >
+
+            Отправить заявление
+
+        </button>
+
+
+    </form>
+
+
+
+    <!-- УСПЕШНАЯ ОТПРАВКА -->
+
+    <div
+        class="application-success"
+        id="applicationSuccess"
+    >
+
+
+        <div class="success-icon">
+            ✓
+        </div>
+
+
+        <h3>
+            Заявление отправлено
+        </h3>
+
+
+        <p>
+            Номер вашего заявления:
+        </p>
+
+
+        <strong id="applicationNumber">
+            ZAGS-000000
+        </strong>
+
+
+        <span>
+            Статус: На рассмотрении
+        </span>
+
+
+
+        <div class="success-details">
+
+
+            <div>
+
+                <small>
+                    Услуга
+                </small>
+
+                <strong id="successService">
+                    Регистрация брака
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <small>
+                    Дата регистрации
+                </small>
+
+                <strong id="successDate">
+                    —
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <small>
+                    Место
+                </small>
+
+                <strong id="successPlace">
+                    —
+                </strong>
+
+            </div>
+
+
+        </div>
+
+
+
+        <button
+            type="button"
+            class="button button-secondary success-close"
+            onclick="closeApplication()"
+        >
+
+            Закрыть
+
+        </button>
+
+
+    </div>
+
+
+</div>
+
+</div>
+
+<!-- ==================================================
+     МОДАЛЬНОЕ ОКНО ОТЗЫВА
+================================================== -->
+
+<div
+    class="modal"
+    id="reviewModal"
+>
+
+    <div class="modal-window review-modal">
+
+        <button
+            class="modal-close"
+            onclick="closeReviewModal()"
+        >
+            ×
+        </button>
+
+        <div class="section-label">
+            ОТЗЫВ
+        </div>
+
+        <h2>
+            Оставить отзыв
+        </h2>
+
+        <p class="modal-description">
+            Поделитесь своим мнением о сервисе.
+        </p>
+
+        <form id="reviewForm">
+
+            <div class="form-section">
+
+                <div class="form-grid">
+
+                    <div class="form-field">
+
+                        <label>
+                            Ваше имя
+                        </label>
+
+                        <input
+                            type="text"
+                            id="reviewName"
+                            placeholder="Например: Иван"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-field">
+
+                        <label>
+                            Город
+                        </label>
+
+                        <input
+                            type="text"
+                            id="reviewCity"
+                            placeholder="Краснодар"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-field form-field-full">
+
+                        <label>
+                            Ваша оценка
+                        </label>
+
+                        <select
+                            id="reviewRating"
+                            required
+                        >
+
+                            <option value="">
+                                Выберите оценку
+                            </option>
+
+                            <option value="5">
+                                ★★★★★ — Отлично
+                            </option>
+
+                            <option value="4">
+                                ★★★★☆ — Хорошо
+                            </option>
+
+                            <option value="3">
+                                ★★★☆☆ — Нормально
+                            </option>
+
+                            <option value="2">
+                                ★★☆☆☆ — Плохо
+                            </option>
+
+                            <option value="1">
+                                ★☆☆☆☆ — Очень плохо
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-field form-field-full">
+
+                        <label>
+                            Ваш отзыв
+                        </label>
+
+                        <textarea
+                            id="reviewText"
+                            placeholder="Напишите, что вам понравилось..."
+                            rows="5"
+                            required
+                        ></textarea>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="submit-button"
+            >
+                Отправить отзыв
+            </button>
+
+        </form>
+
+
+        <div
+            class="review-success"
+            id="reviewSuccess"
+            style="display:none;"
+        >
+
+            <div class="success-icon">
+                ✓
+            </div>
+
+            <h3>
+                Спасибо за отзыв!
+            </h3>
+
+            <p>
+                Ваш отзыв успешно отправлен.
+            </p>
+
+            <button
+                type="button"
+                class="button button-secondary"
+                onclick="closeReviewModal()"
+            >
+                Закрыть
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- SUPABASE -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<!-- ОСНОВНОЙ СКРИПТ САЙТА -->
+<script src="script.js"></script>
+
+
+</body>
+
+</html>
