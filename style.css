@@ -1593,3 +1593,22 @@ footer {
         gap: 5px;
     }
 }
+@media (max-width: 650px) {
+
+    .hero-buttons {
+        position: relative;
+        z-index: 999;
+    }
+
+    .hero-buttons button {
+        position: relative;
+        z-index: 1000;
+        pointer-events: auto;
+    }
+
+    .button {
+        cursor: pointer;
+        pointer-events: auto;
+    }
+
+}
