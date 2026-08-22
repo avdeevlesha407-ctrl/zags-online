@@ -510,11 +510,11 @@ window.location.href="index.html";
 
     border-radius:14px;
 
-    background:#1e6b42;
-
     color:white;
 
     font-weight:bold;
+
+    font-size:15px;
 
     box-shadow:
     0 15px 40px rgba(0,0,0,0.35);
@@ -540,23 +540,45 @@ window.location.href="index.html";
 
 }
 
+
+#notification.success{
+
+    background:#1e7a45;
+
+}
+
+
+#notification.error{
+
+    background:#a52a2a;
+
+}
+
 </style>
 
 
 <script>
 
-function showNotification(text){
+
+function showNotification(text, type = "success"){
 
 
-const box =
-document.getElementById("notification");
+const box = document.getElementById("notification");
 
 
 box.innerHTML =
-"✓ " + text;
+
+(type === "error" ? "⚠ " : "✓ ") + text;
+
+
+box.className = "";
+
+
+box.classList.add(type);
 
 
 box.classList.add("show");
+
 
 
 setTimeout(()=>{
@@ -565,12 +587,15 @@ setTimeout(()=>{
 box.classList.remove("show");
 
 
-},2500);
+},3000);
 
 
 }
 
+
 </script>
+
+
 
 </body>
 
