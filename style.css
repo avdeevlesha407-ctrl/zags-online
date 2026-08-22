@@ -1612,3 +1612,82 @@ footer {
     }
 
 }
+/* =====================================================
+   СЧАСТЛИВЫЕ ПАРЫ
+   ===================================================== */
+
+.happy {
+    padding: 115px 0;
+    background: #091523;
+}
+
+
+.happy-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+
+.happy-card {
+
+    background: #0d1c2d;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    transition: .3s;
+}
+
+
+.happy-card:hover {
+
+    transform: translateY(-5px);
+
+}
+
+
+.happy-card img {
+
+    width:100%;
+
+    height:300px;
+
+    object-fit:cover;
+
+}
+
+
+.happy-info {
+
+    padding:20px;
+
+}
+
+
+.happy-info h3 {
+
+    font-size:20px;
+
+}
+
+
+.happy-info p {
+
+    color:#718399;
+
+    margin-top:8px;
+
+}
+
+
+.happy-info span {
+
+    color:#68a4da;
+
+    font-size:13px;
+
+}
