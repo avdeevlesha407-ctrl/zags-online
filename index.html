@@ -2701,5 +2701,37 @@ document.getElementById("certificateModal")
 
 
 </body>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
+<script>
+
+const client = window.supabase.createClient(
+
+"https://urpyixokiisyyjyfqdqp.supabase.co",
+
+""sb_publishable_7Pc3MuZhmSqFv3_R0gZnrg_8YUQyI0K""
+
+);
+
+
+async function checkUser(){
+
+const {
+data:{user}
+}=await client.auth.getUser();
+
+
+if(!user){
+
+window.location.href="login.html";
+
+}
+
+}
+
+
+checkUser();
+
+
+</script>
 </html>
