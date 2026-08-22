@@ -467,24 +467,21 @@ password:password
 
 if(error){
 
+    showNotification(error.message, "error");
 
-showNotification(error.message, "error");
-
-
-return;
-
+    return;
 
 }
-
-
 
 
 showNotification("Вход выполнен!");
 
 
+setTimeout(()=>{
 
-window.location.href="index.html";
+    window.location.href="index.html";
 
+},1500);
 
 
 }
